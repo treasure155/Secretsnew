@@ -191,10 +191,10 @@ app.get('/secrets', (req, res) => {
       })
       .catch(err => {
         console.log(err);
-        res.redirect('/login');
+        res.redirect('/');
       });
   } else {
-    res.redirect('/login');
+    res.redirect('/');
   }
 });
 
