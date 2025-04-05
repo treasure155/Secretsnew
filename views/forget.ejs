@@ -1,30 +1,27 @@
 <%- include('partials/header') %>
 
+<div class="container mt-5">
+  <h1 class="text-center">Forgot Password</h1>
 
+  <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger mt-4">
+      <%= error %>
+    </div>
+  <% } %>
 
+  <% if (info && info.length > 0) { %>
+    <div class="alert alert-info mt-4">
+      <%= info %>
+    </div>
+  <% } %>
 
-  <div class="container">
-    <h1 class="mt-5">Forgot Password</h1>
-
-    <% if (error && error.length > 0) { %>
-      <div class="alert alert-danger mt-4">
-        <%= error %>
-      </div>
-    <% } %>
-
-    <% if (error && error.length > 0) { %>
-      <div class="alert alert-info mt-4">
-        <%= info %>
-      </div>
-    <% } %>
-
-    <form action="/forget" method="POST" class="mt-4">
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" class="form-control" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Reset Password</button>
-    </form>
-  </div>
+  <form action="/forget" method="POST" class="mt-4">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block mt-3">Reset Password</button>
+  </form>
+</div>
 
 <%- include('partials/footer') %>
