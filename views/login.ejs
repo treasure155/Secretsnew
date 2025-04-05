@@ -1,0 +1,61 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+  <h1>Login</h1>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+        
+          <!-- Error message will be shown by JavaScript if error=true -->
+          <div id="error-message" class="alert alert-danger" style="display: none;"></div>
+
+          <!-- Login Form -->
+          <form action="/login" method="POST">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" name="username" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-dark">Login</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <a class="btn btn-block btn-social btn-google" href="/auth/google" role="button">
+            <i class="fab fa-google"></i>
+            Sign In with Google
+          </a>
+          <a class="btn btn-block btn-social btn-facebook" href="/auth/facebook" role="button">
+            <i class="fab fa-facebook"></i>
+            Sign In with Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<%- include('partials/footer') %>
+
+<script>
+  // Check for error query parameter in the URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const error = urlParams.get('error');
+  
+  if (error === 'true') {
+    // Display error message if error=true in URL
+    document.getElementById('error-message').textContent = 'Invalid username or password. Please try again.';
+    document.getElementById('error-message').style.display = 'block';
+  }
+</script>
